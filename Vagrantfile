@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
                   "--natdnshostresolver1", "on"]
   end
 
-  config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime"
+  config.vm.provision :shell, :inline => "sudo sed -i -e 's/en_US/ja_JP/' /etc/sysconfig/i18n && sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime"
 
   config.vm.provision :shell, :inline => "sudo yum install puppet -y"
 
